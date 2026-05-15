@@ -169,8 +169,9 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
-# mkdocs documentation
-/site
+# MkDocs build output (do not use `/site` here — this repo has an Astro app in ./site)
+# If you add MkDocs under docs/, ignore its output explicitly, e.g.:
+# docs/site/
 
 # mypy
 .mypy_cache/

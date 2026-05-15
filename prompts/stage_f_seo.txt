@@ -6,30 +6,41 @@ POST:
 """
 
 ============================================================
-TITLE REQUIREMENTS — non-negotiable:
+★ TITLE REQUIREMENTS — strict, non-negotiable:
 ============================================================
 
-- 50-65 characters total INCLUDING SPACES. HARD CAP at 65 characters. Count them.
-- Must be a SPECIFIC CLAIM, not a topic label.
+LENGTH: 50-65 characters total INCLUDING SPACES.
+- HARD MINIMUM: 50 characters. If your title comes in under 50, ADD a clarifying word or two until it reaches at least 50. Do NOT submit titles shorter than 50 chars.
+- HARD MAXIMUM: 65 characters. Count them before returning.
+
+CONTENT: Must be a SPECIFIC CLAIM, not a topic label.
 
 BAD title patterns to AVOID:
+- Too short (under 50): "Your forecast breaks where reps stop updating CRM" (49 chars — TOO SHORT)
 - Topic labels: "The Importance of Sales Process Adherence" (vague, no claim)
-- Subtitle stacks: "The Ferrari with a Loose Nut: Why Your GTM Playbook Is Only as Good as Your Worst Rep's Morning" (95 chars, too long)
+- Subtitle stacks: "The Ferrari with a Loose Nut: Why Your GTM Playbook Is Only as Good as Your Worst Rep's Morning" (95 chars — way too long)
 - Generic "guide" framings: "A Complete Guide to Sales Forecasting" (no specific claim)
 
 GOOD title patterns to USE:
-- "Why [specific thing] [verb claim]": "Why your GTM playbook breaks at the rep layer" (47 chars)
-- "How [specific operator action]": "How top reps actually win against entrenched competitors" (58 chars)
-- "[specific claim about reality]": "Sales process dies on the rep who never updates the CRM" (56 chars)
-- Counter-intuitive claim: "Your forecast isn't broken. Your CRM hygiene is." (51 chars)
+- "Why your forecast breaks where reps stop updating the CRM" (57 chars ✓)
+- "Why your GTM playbook breaks at the rep layer in practice" (57 chars ✓)
+- "How top reps actually win against entrenched competitors" (56 chars ✓)
+- "Your sales playbook is only as good as your worst rep" (54 chars ✓)
+- "Your forecast isn't broken. Your CRM data hygiene is." (51 chars ✓)
+- "Sales process dies on the rep who never updates the CRM" (56 chars ✓)
+
+Pattern: "Why [specific thing] [verb claim]" or "How [specific operator action]" or "[specific declarative claim about reality]"
+
+CRITICAL: Before returning the JSON, COUNT THE CHARACTERS in your title (including spaces). If under 50 or over 65, REVISE before returning.
 
 ============================================================
 META DESCRIPTION REQUIREMENTS:
 ============================================================
 
-- 140-160 characters total INCLUDING SPACES.
+- 140-160 characters total INCLUDING SPACES. Hard minimum 140, hard maximum 165.
 - Primary keyword appears in the first half.
 - Ends with implicit value to the reader (NOT a CTA like "learn more" or "read on").
+- Count the characters before returning.
 
 ============================================================
 FAQ SCHEMA REQUIREMENTS:
@@ -54,7 +65,7 @@ OUTPUT FORMAT:
 Return ONLY valid JSON in this exact schema:
 
 {{
-  "title": "<50-65 chars, specific claim, includes primary keyword>",
+  "title": "<50-65 chars, specific claim, COUNT CHARS BEFORE RETURNING>",
   "slug": "<url-safe lowercase with hyphens, 3-6 words>",
   "meta_description": "<140-160 chars, primary keyword in first half>",
   "primary_keyword": "<the main search term>",
@@ -71,3 +82,5 @@ Return ONLY valid JSON in this exact schema:
 }}
 
 NO commentary outside the JSON. NO code fences around it. NO preamble. Just the JSON object.
+
+★ Before returning: count the characters in your title and meta_description. If title < 50 or > 65, REVISE. If meta_description < 140 or > 165, REVISE.
