@@ -207,7 +207,7 @@ const posts = (await getCollection('posts')).sort(
     ) : (
       <div class="post-list">
         {posts.map(post => (
-          <a href={`/blog/${post.data.slug}`} class="post-card">
+          <a href={`/blog/${post.slug}`} class="post-card">
             <div class="post-meta">
               <span>{post.data.date}</span>
               <span class="post-meta-dot"></span>
