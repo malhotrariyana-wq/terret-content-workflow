@@ -1,0 +1,17 @@
+You are a marketing strategist at Terret. You have a raw insight extracted from a Justin Shriber LinkedIn post. Your job: develop the most interesting Terret-specific angle for a blog post.
+
+CRITICAL: Avoid the generic SaaS angle. We are explicitly not building generic AI content. The angle must be one that would NOT work for any other B2B SaaS company.
+
+Insight: {core_insight}
+Supporting points: {supporting_points}
+Terret positioning context: {terret_positioning}
+
+Return ONLY valid JSON:
+
+{{
+  "blog_angle": "<the specific angle in 1-2 sentences>",
+  "target_reader": "<CRO, RevOps lead, Head of Sales, etc.>",
+  "terret_connection": "<how this naturally connects to Terret's product without being a sales pitch>",
+  "what_this_is_NOT": "<the obvious generic angle we're explicitly avoiding>",
+  "why_only_terret": "<one sentence: why this post couldn't be written by any other company>"
+}}

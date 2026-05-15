@@ -1,0 +1,73 @@
+Generate publication metadata for this Terret blog post. Optimize for both human search (SEO) and AI answer engines (AEO/GEO — citation by ChatGPT, Perplexity, Google AI Overviews).
+
+POST:
+"""
+{draft}
+"""
+
+============================================================
+TITLE REQUIREMENTS — non-negotiable:
+============================================================
+
+- 50-65 characters total INCLUDING SPACES. HARD CAP at 65 characters. Count them.
+- Must be a SPECIFIC CLAIM, not a topic label.
+
+BAD title patterns to AVOID:
+- Topic labels: "The Importance of Sales Process Adherence" (vague, no claim)
+- Subtitle stacks: "The Ferrari with a Loose Nut: Why Your GTM Playbook Is Only as Good as Your Worst Rep's Morning" (95 chars, too long)
+- Generic "guide" framings: "A Complete Guide to Sales Forecasting" (no specific claim)
+
+GOOD title patterns to USE:
+- "Why [specific thing] [verb claim]": "Why your GTM playbook breaks at the rep layer" (47 chars)
+- "How [specific operator action]": "How top reps actually win against entrenched competitors" (58 chars)
+- "[specific claim about reality]": "Sales process dies on the rep who never updates the CRM" (56 chars)
+- Counter-intuitive claim: "Your forecast isn't broken. Your CRM hygiene is." (51 chars)
+
+============================================================
+META DESCRIPTION REQUIREMENTS:
+============================================================
+
+- 140-160 characters total INCLUDING SPACES.
+- Primary keyword appears in the first half.
+- Ends with implicit value to the reader (NOT a CTA like "learn more" or "read on").
+
+============================================================
+FAQ SCHEMA REQUIREMENTS:
+============================================================
+
+Pull 3-5 FAQs directly from the post's FAQ section. The schema version should be tighter than the body version:
+- Each answer is 1-3 sentences (shorter than the body answer, optimized for being quoted by AI engines).
+- Each answer contains at least one specific claim or stat that could be directly quoted.
+- Avoid generic openers like "It depends" — anchor every answer in a concrete claim.
+
+============================================================
+TAGS:
+============================================================
+
+Choose 3-5 tags from this controlled vocabulary (do not invent new tags):
+forecasting, revenue-intelligence, ai-gtm, sales-process, revops, ai-agents, pipeline, sales-coaching, deal-execution, sales-forecasting, customer-success, sales-productivity, win-rates, gtm-strategy, sales-methodology, conversation-intelligence
+
+============================================================
+OUTPUT FORMAT:
+============================================================
+
+Return ONLY valid JSON in this exact schema:
+
+{{
+  "title": "<50-65 chars, specific claim, includes primary keyword>",
+  "slug": "<url-safe lowercase with hyphens, 3-6 words>",
+  "meta_description": "<140-160 chars, primary keyword in first half>",
+  "primary_keyword": "<the main search term>",
+  "secondary_keywords": ["<kw>", "<kw>", "<kw>"],
+  "tags": ["<tag1>", "<tag2>", "<tag3>", "<tag4>"],
+  "estimated_read_time_minutes": <integer>,
+  "faq_schema": [
+    {{"question": "<question phrased the way someone would ask AI>", "answer": "<concise 1-3 sentence answer with specific claim>"}},
+    {{"question": "...", "answer": "..."}},
+    {{"question": "...", "answer": "..."}},
+    {{"question": "...", "answer": "..."}}
+  ],
+  "author": "Terret Editorial"
+}}
+
+NO commentary outside the JSON. NO code fences around it. NO preamble. Just the JSON object.

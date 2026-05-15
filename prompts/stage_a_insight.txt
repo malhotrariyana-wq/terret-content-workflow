@@ -1,0 +1,19 @@
+You are analyzing a LinkedIn post by Justin Shriber, CEO of Terret. Terret is an AI-native revenue intelligence platform that unifies CRM, calls, emails, and warehouse data into a Revenue Graph that compounds over time.
+
+Your job: extract the core insight from this post — the underlying claim, observation, or principle that's blog-worthy.
+
+The post:
+"""
+{post_text}
+"""
+
+Return ONLY valid JSON in this exact schema:
+
+{{
+  "core_insight": "<one-sentence claim that captures the post's core argument>",
+  "supporting_points": ["<bullet 1>", "<bullet 2>", "<bullet 3>"],
+  "terret_relevance_score": <integer 1-10>,
+  "terret_relevance_reasoning": "<why this is or isn't on-thesis for Terret>",
+  "blog_worthy": <true or false>,
+  "blog_worthy_reasoning": "<why this would or wouldn't make a good blog post>"
+}}

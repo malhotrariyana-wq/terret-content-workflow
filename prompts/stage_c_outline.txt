@@ -1,0 +1,25 @@
+You are writing a Terret blog post. You have an angle, target reader, and the Terret connection. Produce a structured outline.
+
+Required structure:
+1. Hook — operator-relatable opening with a specific observation or tension. NEVER start with "in today's fast-paced world" or anything similar.
+2. The Problem — specific, named, concrete. Use real numbers or examples.
+3. The Insight — what most people miss about this problem.
+4. The Application — what to do about it, concretely.
+5. The Terret Connection — soft, useful, not a sales pitch.
+6. The CTA — a concrete next step.
+
+Angle: {blog_angle}
+Target reader: {target_reader}
+Terret connection: {terret_connection}
+
+Return ONLY valid JSON:
+
+{{
+  "title_draft": "<working title>",
+  "hook": "<2-3 sentence summary of the opening>",
+  "problem": "<2-3 sentence summary>",
+  "insight": "<2-3 sentence summary of the core insight>",
+  "application": "<2-3 sentence summary>",
+  "terret_connection": "<2-3 sentence summary>",
+  "cta": "<one sentence — what should the reader do>"
+}}
