@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
   return posts.map((post) => ({
-    params: { slug: post.data.slug },
+    params: { slug: post.slug },
     props: { post },
   }));
 }
@@ -22,7 +22,7 @@ const jsonLd = {
   keywords: post.data.tags.join(', '),
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': `https://terret-content-workflow.vercel.app/blog/${post.data.slug}`,
+    '@id': `https://terret-content-workflow.vercel.app/blog/${post.slug}`,
   },
 };
 
@@ -52,7 +52,7 @@ const faqJsonLd =
     <meta property="og:title" content={post.data.title} />
     <meta property="og:description" content={post.data.description} />
     <meta property="og:type" content="article" />
-    <link rel="canonical" href={`https://terret-content-workflow.vercel.app/blog/${post.data.slug}`} />
+    <link rel="canonical" href={`https://terret-content-workflow.vercel.app/blog/${post.slug}`} />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>}
     <style>
