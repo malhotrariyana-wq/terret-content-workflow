@@ -1,0 +1,44 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Terret Content Workflow — Demo Blog</title>
+    <style>
+      body {
+        max-width: 720px;
+        margin: 2em auto;
+        font-family: -apple-system, system-ui, sans-serif;
+        line-height: 1.6;
+        padding: 0 1em;
+      }
+      a {
+        color: #1a1a1a;
+        text-decoration: none;
+        border-bottom: 1px solid #ddd;
+      }
+      a:hover {
+        border-bottom-color: #1a1a1a;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Terret Blog (Demo)</h1>
+    <p>This is the demo blog for the Terret content workflow project.</p>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </body>
+</html>

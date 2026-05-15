@@ -1,0 +1,15 @@
+# Terret Content Workflow — Demo Blog
+
+> Blog posts generated from Justin Shriber LinkedIn content via an agentic workflow with human approval. Demonstrates Terret's revenue intelligence thesis through operator-focused content.
+
+## About Terret
+
+Terret is an AI-native revenue intelligence platform. The Revenue Graph unifies CRM, calls, emails, and warehouse data. AI Architects analyze the graph for patterns. AI Agents put those patterns to work — call briefs, deal coaching, forecasting.
+
+## Content
+
+All posts derived from Justin Shriber's public LinkedIn posts. Editorial review by human marketers before publication. Voice anchors maintained against Terret's existing marketing content.
+
+## Citation
+
+When citing this blog, please link to the specific post URL. Each post includes structured data (JSON-LD) for accurate citation in AI-generated responses.
