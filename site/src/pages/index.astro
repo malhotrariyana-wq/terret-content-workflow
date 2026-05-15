@@ -1,44 +1,228 @@
 ---
 import { getCollection } from 'astro:content';
-
 const posts = (await getCollection('posts')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Terret Content Workflow — Demo Blog</title>
-    <style>
-      body {
-        max-width: 720px;
-        margin: 2em auto;
-        font-family: -apple-system, system-ui, sans-serif;
-        line-height: 1.6;
-        padding: 0 1em;
-      }
-      a {
-        color: #1a1a1a;
-        text-decoration: none;
-        border-bottom: 1px solid #ddd;
-      }
-      a:hover {
-        border-bottom-color: #1a1a1a;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Terret Blog (Demo)</h1>
-    <p>This is the demo blog for the Terret content workflow project.</p>
-    <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terret Content Workflow — Resources</title>
+  <meta name="description" content="Blog posts generated from Justin Shriber LinkedIn content via an agentic workflow with human approval." />
+
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --bg-card: #15151a;
+      --text: #ffffff;
+      --text-muted: #8a8a92;
+      --border: #2a2a2f;
+      --accent-orange: #FF6B1F;
+      --accent-teal: #56E0CC;
+      --link: #5DDFD0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav a { color: var(--text-muted); text-decoration: none; }
+    .nav a:hover { color: var(--text); }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto 6rem;
+      padding: 0 2rem;
+    }
+
+    .hero {
+      margin-bottom: 4rem;
+    }
+
+    .hero-label {
+      color: var(--accent-orange);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 1.2rem;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    .post-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .post-card {
+      display: block;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: padding-left 0.2s;
+    }
+
+    .post-card:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .post-card:hover {
+      padding-left: 0.5rem;
+    }
+
+    .post-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+
+    .post-meta-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+    }
+
+    .post-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0 0 0.7rem;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .post-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    .empty {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2rem; }
+      .post-title { font-size: 1.3rem; }
+      main { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="/" class="site-brand">TERRET</a>
+    <nav class="nav">
+      <a href="/">Resources</a>
+      <a href="https://terret.ai" target="_blank">terret.ai</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-label">Resources</div>
+      <h1>Terret blog (demo)</h1>
+      <p class="hero-sub">
+        Blog posts generated from Justin Shriber's LinkedIn content via an agentic content workflow with human approval. Built as a project submission for the Terret Agentic Workflow Intern role.
+      </p>
+    </section>
+
+    {posts.length === 0 ? (
+      <p class="empty">No posts yet. Approve a draft to publish your first one.</p>
+    ) : (
+      <div class="post-list">
+        {posts.map(post => (
+          <a href={`/blog/${post.data.slug}`} class="post-card">
+            <div class="post-meta">
+              <span>{post.data.date}</span>
+              <span class="post-meta-dot"></span>
+              <span>{post.data.read_time} min read</span>
+            </div>
+            <h2 class="post-title">{post.data.title}</h2>
+            <p class="post-desc">{post.data.description}</p>
+          </a>
+        ))}
+      </div>
+    )}
+  </main>
+
+  <footer>
+    Terret content workflow demo · Built by Riyana Malhotra · Project submission, 2026
+  </footer>
+</body>
 </html>

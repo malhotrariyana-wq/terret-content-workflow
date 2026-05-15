@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  return posts.map((post) => ({
+  return posts.map(post => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post }
   }));
 }
 
@@ -13,95 +13,364 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  headline: post.data.title,
-  description: post.data.description,
-  author: { '@type': 'Organization', name: post.data.author },
-  datePublished: post.data.date,
-  keywords: post.data.tags.join(', '),
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': `https://terret-content-workflow.vercel.app/blog/${post.slug}`,
-  },
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "author": { "@type": "Organization", "name": post.data.author },
+  "datePublished": post.data.date,
+  "keywords": post.data.tags.join(", "),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://terret-content-workflow.vercel.app/blog/${post.slug}`
+  }
 };
 
-const faqJsonLd =
-  post.data.faq.length > 0
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: post.data.faq.map((item) => ({
-          '@type': 'Question',
-          name: item.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: item.answer,
-          },
-        })),
-      }
-    : null;
+const faqJsonLd = post.data.faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": post.data.faq.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{post.data.title}</title>
-    <meta name="description" content={post.data.description} />
-    <meta property="og:title" content={post.data.title} />
-    <meta property="og:description" content={post.data.description} />
-    <meta property="og:type" content="article" />
-    <link rel="canonical" href={`https://terret-content-workflow.vercel.app/blog/${post.slug}`} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
-    {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>}
-    <style>
-      body {
-        max-width: 720px;
-        margin: 2em auto;
-        font-family: -apple-system, system-ui, sans-serif;
-        line-height: 1.6;
-        padding: 0 1em;
-        color: #1a1a1a;
-      }
-      h1 {
-        font-size: 2.2em;
-        line-height: 1.2;
-      }
-      h2 {
-        margin-top: 2em;
-      }
-      .meta {
-        color: #666;
-        font-size: 0.9em;
-        margin-bottom: 2em;
-      }
-      .faq {
-        background: #f7f7f7;
-        padding: 1.5em;
-        border-radius: 8px;
-        margin-top: 3em;
-      }
-    </style>
-  </head>
-  <body>
-    <article>
-      <h1>{post.data.title}</h1>
-      <div class="meta">By {post.data.author} · {post.data.date} · {post.data.read_time} min read</div>
-      <Content />
-      {
-        post.data.faq.length > 0 && (
-          <section class="faq">
-            <h2>Frequently Asked Questions</h2>
-            {post.data.faq.map((item) => (
-              <div>
-                <h3>{item.question}</h3>
-                <p>{item.answer}</p>
-              </div>
-            ))}
-          </section>
-        )
-      }
-    </article>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{post.data.title}</title>
+  <meta name="description" content={post.data.description} />
+  <meta property="og:title" content={post.data.title} />
+  <meta property="og:description" content={post.data.description} />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href={`https://terret-content-workflow.vercel.app/blog/${post.slug}`} />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  {faqJsonLd && <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>}
+
+  <style>
+    /* === Terret-inspired design system === */
+    :root {
+      --bg: #0a0a0d;
+      --bg-card: #15151a;
+      --text: #ffffff;
+      --text-muted: #8a8a92;
+      --border: #2a2a2f;
+      --accent-orange: #FF6B1F;
+      --accent-teal: #56E0CC;
+      --link: #5DDFD0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header / brand */
+    .site-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 2rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    /* Article container */
+    article {
+      max-width: 760px;
+      margin: 2rem auto 6rem;
+      padding: 0 2rem;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 1.5rem 0 2rem;
+    }
+
+    /* Author byline */
+    .byline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .byline-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-teal), var(--accent-orange));
+      flex-shrink: 0;
+    }
+
+    .byline-info { display: flex; flex-direction: column; gap: 0.2rem; }
+
+    .byline-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .byline-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+
+    /* Body content */
+    article p {
+      font-size: 1.05rem;
+      margin: 1.2rem 0;
+      color: #d6d6dc;
+    }
+
+    article h2 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    article h3 {
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      font-weight: 700;
+    }
+
+    /* Lists, with orange bullets for TL;DR */
+    article ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 1.5rem 0;
+    }
+
+    article ul li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin: 0.8rem 0;
+      color: #d6d6dc;
+    }
+
+    article ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-orange);
+    }
+
+    article ol {
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    article ol li { margin: 0.8rem 0; color: #d6d6dc; }
+
+    /* Links */
+    article a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(93, 223, 208, 0.3);
+      transition: border-color 0.2s;
+    }
+
+    article a:hover { border-bottom-color: var(--link); }
+
+    /* Strong */
+    article strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Blockquote */
+    article blockquote {
+      border-left: 3px solid var(--accent-orange);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+
+    /* Code */
+    article code {
+      background: var(--bg-card);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.92em;
+      color: var(--accent-teal);
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+
+    /* FAQ section */
+    .faq-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 4rem 0 2rem;
+    }
+
+    .faq-section h2 {
+      margin-top: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-item h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0 0 0.7rem;
+      color: var(--text);
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #d6d6dc;
+      font-size: 1rem;
+    }
+
+    /* Proof of concept CTA box */
+    .poc-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin: 4rem 0 2rem;
+      background: linear-gradient(180deg, var(--bg-card), var(--bg));
+    }
+
+    .poc-label {
+      color: var(--accent-orange);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: ui-monospace, "SF Mono", monospace;
+    }
+
+    .poc-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .poc-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Source link back to original Justin post */
+    .source-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 2.2rem; }
+      article { padding: 0 1.2rem; margin: 1rem auto 4rem; }
+      .faq-section, .poc-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a href="/" class="site-brand">TERRET</a>
+    <nav class="nav">
+      <a href="/">Resources</a>
+      <a href="https://terret.ai" target="_blank">terret.ai</a>
+    </nav>
+  </header>
+
+  <article>
+    <h1>{post.data.title}</h1>
+
+    <div class="byline">
+      <div class="byline-avatar"></div>
+      <div class="byline-info">
+        <span class="byline-name">{post.data.author}</span>
+        <span class="byline-date">{post.data.date} · {post.data.read_time} min read</span>
+      </div>
+    </div>
+
+    <Content />
+
+    {post.data.faq.length > 0 && (
+      <section class="faq-section">
+        <h2>FAQs</h2>
+        {post.data.faq.map(item => (
+          <div class="faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {post.data.source_post && (
+      <div class="source-note">
+        Inspired by a LinkedIn post from Justin Shriber, CEO of Terret.
+        Original: <a href={post.data.source_post}>{post.data.source_post}</a>
+      </div>
+    )}
+  </article>
+</body>
 </html>
