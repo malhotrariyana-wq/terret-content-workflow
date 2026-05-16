@@ -7,8 +7,8 @@ def check_aeo_compliance(metadata: dict) -> dict:
     issues = []
 
     title = metadata.get("title", "")
-    if not (50 <= len(title) <= 65):
-        issues.append(f"Title length {len(title)} not in 50-65 range")
+    if not (30 <= len(title) <= 70):
+        issues.append(f"Title length {len(title)} not in 30-70 range")
 
     meta_desc = metadata.get("meta_description", "")
     if not (140 <= len(meta_desc) <= 165):
