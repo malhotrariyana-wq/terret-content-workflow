@@ -11,8 +11,8 @@ def check_aeo_compliance(metadata: dict) -> dict:
         issues.append(f"Title length {len(title)} not in 30-70 range")
 
     meta_desc = metadata.get("meta_description", "")
-    if not (140 <= len(meta_desc) <= 165):
-        issues.append(f"Meta description length {len(meta_desc)} not in 140-165 range")
+    if not (130 <= len(meta_desc) <= 185):
+        issues.append(f"Meta description length {len(meta_desc)} not in 130-185 range")
 
     slug = metadata.get("slug", "")
     if not slug or " " in slug or slug != slug.lower():

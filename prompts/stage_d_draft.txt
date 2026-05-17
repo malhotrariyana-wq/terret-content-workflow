@@ -8,11 +8,10 @@ MANDATORY STRUCTURE — every output MUST contain these elements IN THIS ORDER:
 
 2. ## TL;DR section: Exactly 3-5 bullet points. Each bullet is ONE complete sentence stating a key claim. Bullets are NOT topics — they are claims.
 
-3. Body: 4-5 H2 sections. Every H2 MUST be a statement or claim, NEVER a topic label.
+3. Body: 4-5 H2 sections (these are the only H2s — no FAQ section in the body). Every H2 MUST be a statement or claim, NEVER a topic label.
    BAD H2 (topic): "Common Mistakes" / "The Solution" / "Background"
    GOOD H2 (claim): "Why enforcing rigid CRM hygiene creates the activity illusion"
 
-4. ## FAQs about [topic] section: 4-6 questions. Each question is phrased the way an operator would search or ask ChatGPT. Each answer is 2-4 sentences with at least one specific stat or claim.
 
 ============================================================
 ★ GENERICNESS DEFENSE — MANDATORY (this is where most drafts fail):
