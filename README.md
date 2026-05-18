@@ -113,9 +113,17 @@ One complete LinkedIn post → blog post cycle, fully run.
 | **PR (approval moment)** | Marketer merges to publish | [PR #2 — merged][PR_URL] |
 | **Live post** | Vercel auto-deploys | [view live][POST_URL] |
 
-### Slack Notification Screenshot
+## Slack Notification Screenshot
 
-![Slack Notification][SLACK_SS]
+![Slack Notification](notify/Screenshot%202026-05-18%20at%202.27.29%20PM.png)
+
+<h2>Slack Notification Screenshot</h2>
+
+<img
+  src="notify/Screenshot%202026-05-18%20at%202.27.29%20PM.png"
+  alt="Slack Notification"
+  width="700"
+/>
 
 ### Eval scores on the published version
 
@@ -327,5 +335,4 @@ terret-content-workflow/
 [STAGE_D]: prompts/stage_d_draft.txt
 [STAGE_E]: prompts/stage_e_refine.txt
 [STAGE_F]: prompts/stage_f_seo.txt
-[SLACK_SS]: notify/Screenshot 2026-05-18 at 2.27.29 PM.png
 [AUTHOR_LINKEDIN]: https://www.linkedin.com/in/riyana-malhotra-887701262/
