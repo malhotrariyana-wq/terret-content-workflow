@@ -109,21 +109,10 @@ One complete LinkedIn post → blog post cycle, fully run.
 | **Stage D — Draft** (Sonnet) | Drafts in Terret's voice using 3 anchor blogs | [markdown draft][STAGE_D] |
 | **Stage E — Refine** (Sonnet) | Editor pass for AI tells + voice drift | [refined markdown][STAGE_E] |
 | **Stage F — SEO/AEO** (Haiku) | Generates title, slug, meta, FAQ schema | [metadata JSON][STAGE_F] |
-| **Slack notification** | Bot posts with eval scores + PR link | See screenshot below
 | **PR (approval moment)** | Marketer merges to publish | [PR #2 — merged][PR_URL] |
 | **Live post** | Vercel auto-deploys | [view live][POST_URL] |
 
-## Slack Notification Screenshot
 
-![Slack Notification](notify/Screenshot%202026-05-18%20at%202.27.29%20PM.png)
-
-<h2>Slack Notification Screenshot</h2>
-
-<img
-  src="notify/Screenshot%202026-05-18%20at%202.27.29%20PM.png"
-  alt="Slack Notification"
-  width="700"
-/>
 
 ### Eval scores on the published version
 
