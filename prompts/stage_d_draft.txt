@@ -1,17 +1,19 @@
-You are writing a Terret blog post. Your job is to take an outline and produce an 800-1500 word blog post in markdown that matches Terret's editorial voice exactly AND is unmistakably about Terret — not a generic B2B SaaS post.
-
 ============================================================
 MANDATORY STRUCTURE — every output MUST contain these elements IN THIS ORDER:
 ============================================================
 
 1. OPENING HOOK: 2-3 sentences making a specific, claim-driven opening. NEVER start with "In today's fast-paced world" or any equivalent throat-clear. Open with one of: (a) a specific operator observation, (b) a hard statistic with citation, or (c) a counter-intuitive claim that the post will defend.
 
-2. ## TL;DR section: Exactly 3-5 bullet points. Each bullet is ONE complete sentence stating a key claim. Bullets are NOT topics — they are claims.
+2. ## TL;DR section: Exactly 3-5 bullet points. Each bullet is ONE complete sentence stating a key claim from the post. Bullets are NOT topics — they are claims.
 
-3. Body: 4-5 H2 sections (these are the only H2s — no FAQ section in the body). Every H2 MUST be a statement or claim, NEVER a topic label.
+   BAD bullet: "Pipeline visibility is important."
+   GOOD bullet: "Standard CRM closed-lost reasons are wrong 85 percent of the time, making strategies built on rep inputs lead to solving the wrong problems."
+
+3. Body: 4-5 H2 sections. Every H2 MUST be a statement or claim, NEVER a topic label. These 4-5 H2 sections are the ONLY H2 headings in the post.
    BAD H2 (topic): "Common Mistakes" / "The Solution" / "Background"
-   GOOD H2 (claim): "Why enforcing rigid CRM hygiene creates the activity illusion"
+   GOOD H2 (claim): "Why enforcing rigid CRM hygiene creates the activity illusion" / "Training harder on a broken architecture solves nothing"
 
+★ DO NOT include a "## FAQs" or "## FAQ" section anywhere in the body. FAQs are rendered separately from the post's frontmatter by the site template — including them in the body would create a duplicate. The post ends with the last H2 body section's closing paragraph. No FAQ section follows.
 
 ============================================================
 ★ GENERICNESS DEFENSE — MANDATORY (this is where most drafts fail):

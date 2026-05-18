@@ -12,8 +12,7 @@ STRUCTURE VERIFICATION — check each item, fix if missing or weak:
    - If you see "Common Mistakes" / "Background" / "The Solution" / "Conclusion" — rewrite as a claim.
    - Good H2 examples: "Why enforcing rigid CRM hygiene creates the activity illusion" / "Training harder on a broken architecture solves nothing"
 
-4. There is a "## FAQs about [topic]" or "## FAQ" section near the end with 4-6 questions. Each question is phrased the way an operator would search. Each answer is 2-4 sentences containing at least one specific stat or claim. If FAQ section is missing, ADD IT.
-
+4. There should be NO "## FAQs" or "## FAQ" section in the body. The FAQ is rendered separately from frontmatter by the site template. If you see a FAQ section in the draft, REMOVE IT entirely along with any "FAQs about [topic]" H2 header. The post should end with the closing paragraph of the last body H2 section.
 ============================================================
 CONTENT RULES — flag and fix any violation:
 ============================================================

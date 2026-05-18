@@ -313,15 +313,15 @@ terret-content-workflow/
 *Built as a project submission for the Terret Agentic Workflow Intern role · 2026*
 *Riyana Malhotra · [LinkedIn][AUTHOR_LINKEDIN]*
 
-[LIVE_URL]: #
-[POST_URL]: #
-[PR_URL]: #
-[SRC_URL]: #
-[STAGE_A]: #
-[STAGE_B]: #
-[STAGE_C]: #
-[STAGE_D]: #
-[STAGE_E]: #
-[STAGE_F]: #
-[SLACK_SS]: #
-[AUTHOR_LINKEDIN]: #
+[LIVE_URL]: https://terret-content-workflow-kol27rytq-riyana-malhotra-s-projects.vercel.app/
+[POST_URL]: https://terret-content-workflow-kol27rytq-riyana-malhotra-s-projects.vercel.app/blog/sales-playbook-execution-gap-infrastructure
+[PR_URL]: https://github.com/malhotrariyana-wq/terret-content-workflow/pull/15
+[SRC_URL]: https://www.linkedin.com/posts/justinshriber_why-perfect-revops-engines-fall-apart-on-activity-7450915050745380864-SKNf?utm_source=share&utm_medium=member_desktop&rcm=ACoAAECIP6cBrBBpGMw_Yq3jfFvOn2OTawZIQ4g
+[STAGE_A]: prompts/stage_a_insight.txt
+[STAGE_B]: prompts/stage_b_angle.txt
+[STAGE_C]: prompts/stage_c_outline.txt
+[STAGE_D]: prompts/stage_d_draft.txt
+[STAGE_E]: prompts/stage_e_refine.txt
+[STAGE_F]: prompts/stage_f_seo.txt
+[SLACK_SS]: file:///var/folders/vs/wpk7bj1j4lg3jx_p0f2zn1km0000gn/T/TemporaryItems/NSIRD_screencaptureui_b1Ug5W/Screenshot%202026-05-18%20at%202.28.52%E2%80%AFPM.png
+[AUTHOR_LINKEDIN]: https://www.linkedin.com/in/riyana-malhotra-887701262/
