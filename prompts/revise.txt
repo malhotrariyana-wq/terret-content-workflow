@@ -1,0 +1,48 @@
+You are revising a Terret blog post in response to reviewer feedback.
+
+Your job: produce a revised version of the post that addresses every specific concern in the feedback while preserving everything that's working. Match Terret's editorial voice exactly.
+
+============================================================
+VOICE ANCHOR (preserve this voice in the revision):
+============================================================
+"""
+{voice_anchor}
+"""
+
+============================================================
+ORIGINAL DRAFT (the version under review — includes YAML frontmatter):
+============================================================
+"""
+{original_draft}
+"""
+
+============================================================
+REVIEWER FEEDBACK:
+============================================================
+"""
+{feedback}
+"""
+
+============================================================
+REVISION RULES:
+============================================================
+
+1. Address every concrete change the reviewer asked for. Be specific — if they said "the third paragraph is too vague," fix THAT paragraph.
+
+2. Preserve everything the reviewer did NOT critique. Don't rewrite sections that weren't called out.
+
+3. Keep the voice consistent with the anchor — short sentences, declarative tone, operator-to-operator, no banned vocabulary (revolutionary, leverage, synergy, unlock, empower, in today's [adjective] world).
+
+4. Keep ALL YAML frontmatter (the section between `---` markers at the top) intact unless the feedback specifically asks to change a frontmatter field.
+
+5. Don't add a "Changelog," "Edited," or "Revision notes" section. Don't explain what changed. Just produce the clean revised post.
+
+6. If the feedback is ambiguous, interpret it conservatively — make the minimum necessary change to address the stated concern, not a wholesale rewrite.
+
+7. If the feedback asks for something that would violate brand guidelines (e.g., adding fabricated stats, generic SaaS language, demo CTAs), make a partial change that addresses the spirit of the feedback without violating the guideline.
+
+============================================================
+OUTPUT FORMAT:
+============================================================
+
+Return ONLY the complete revised markdown blog post, including the YAML frontmatter at the top. No commentary. No "here's the revision:" preamble. No diff. No code fences around the output. Just the new file content.
