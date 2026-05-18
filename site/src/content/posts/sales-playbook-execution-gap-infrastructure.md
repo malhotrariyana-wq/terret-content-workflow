@@ -24,7 +24,7 @@ faq:
     answer: "Start with time-based, rules-driven execution triggers like follow-up windows after initial contact, days-in-stage thresholds, and stakeholder coverage requirements at specific deal sizes. These are high-frequency decisions reps consistently deprioritize under pressure, and moving them into always-on logic produces immediate pipeline hygiene improvement."
 ---
 
-You have a 47-slide playbook, a certified enablement program, and a CRM with mandatory fields at every stage — and your pipeline hygiene report still looks like a crime scene every Friday. The process is not the problem. The problem is that you designed a strategy that only works when every rep remembers, prioritizes, and correctly executes every step, every time, under quota pressure. That is not a process. That is a prayer.
+You have a 47-slide playbook, mandatory CRM fields at every stage, and a certified enablement program — and your pipeline hygiene report still looks like a crime scene every Friday. The process is not the problem. The problem is that execution only works when every rep remembers every step under quota pressure. That is not a process. That is a prayer.
 
 ## TL;DR
 
