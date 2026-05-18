@@ -323,5 +323,5 @@ terret-content-workflow/
 [STAGE_D]: prompts/stage_d_draft.txt
 [STAGE_E]: prompts/stage_e_refine.txt
 [STAGE_F]: prompts/stage_f_seo.txt
-[SLACK_SS]: file:///var/folders/vs/wpk7bj1j4lg3jx_p0f2zn1km0000gn/T/TemporaryItems/NSIRD_screencaptureui_b1Ug5W/Screenshot%202026-05-18%20at%202.28.52%E2%80%AFPM.png
+[SLACK_SS]: notify/Screenshot 2026-05-18 at 2.27.29 PM.png
 [AUTHOR_LINKEDIN]: https://www.linkedin.com/in/riyana-malhotra-887701262/
