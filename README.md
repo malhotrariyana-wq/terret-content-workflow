@@ -29,29 +29,55 @@ What happens from the moment you type `python -m generate.pipeline` to the post 
 
 ```mermaid
 flowchart TD
-    A([🚀 python -m generate.pipeline]) --> B[Load posts from cache]
+    A([🚀 python -m generate.pipeline]) --> B[Load post from data/justin_posts.json<br/>cached from Apify scraper]
 
     subgraph SYNTHESIS["🧠 SYNTHESIS — 6-stage Claude pipeline"]
         direction LR
-        SA[A: Insight<br/>Haiku] --> SB[B: Angle<br/>Sonnet] --> SC[C: Outline<br/>Sonnet] --> SD[D: Draft<br/>Sonnet + anchors] --> SE[E: Refine<br/>Sonnet] --> SF[F: SEO/AEO<br/>Haiku]
+        SA[Stage A<br/>Insight<br/>Haiku 4.5] --> SB[Stage B<br/>Angle<br/>Sonnet 4.6] --> SC[Stage C<br/>Outline<br/>Sonnet 4.6] --> SD[Stage D<br/>Draft in voice<br/>Sonnet + anchors] --> SE[Stage E<br/>Refine<br/>Sonnet 4.6] --> SF[Stage F<br/>SEO/AEO meta<br/>Haiku 4.5]
     end
 
     B --> SA
-    SF --> EVAL[🔬 3 evals run · genericness · voice fit · AEO compliance]
-    EVAL --> PUB[📤 GitHub: build markdown + commit + open PR]
-    PUB --> SLK[📣 Slack notification fires with PR link + eval scores]
 
-    SLK --> R{🧑 Marketer reviews PR}
+    subgraph EVALS["🔬 EVAL LAYER — quality gates before human review"]
+        direction LR
+        EG[Genericness<br/>LLM-as-judge<br/>Sonnet]
+        EV[Voice fit<br/>LLM-as-judge<br/>Sonnet]
+        EA[AEO compliance<br/>deterministic<br/>rules]
+    end
 
-    R -->|✅ Approve = merge PR| MERGE[Merge to main → Vercel auto-deploys]
-    R -->|💬 Comment with feedback| FB[🔄 Revision module: pull draft + feedback → Sonnet revises → push to branch]
+    SF --> EG
+    SF --> EV
+    SF --> EA
+
+    EG --> M[Build markdown file + YAML frontmatter]
+    EV --> M
+    EA --> M
+
+    subgraph PUBLISH["📤 ACTIVATION — publish + notify"]
+        direction LR
+        P1[GitHub API<br/>create branch] --> P2[Commit markdown<br/>to new branch] --> P3[Open PR with<br/>eval scores in body] --> P4[Slack webhook fires<br/>with PR + scores]
+    end
+
+    M --> P1
+
+    P4 --> R{🧑 Marketer reviews PR<br/>three possible actions}
+
+    R -->|✅ Approve = merge| MERGE[Merge to main branch]
     R -->|❌ Reject| END1([Close PR])
+    R -->|💬 Comment with feedback| FB1
 
-    FB --> SLK
-    MERGE --> LIVE([🌐 Live blog post])
+    subgraph FEEDBACK["🔄 FEEDBACK LOOP — agentic revision module"]
+        direction LR
+        FB1[Polling or manual<br/>trigger detects<br/>PR comment] --> FB2[Pull current<br/>draft from<br/>PR branch] --> FB3[Sonnet revises<br/>using feedback<br/>+ voice anchor] --> FB4[Push revision<br/>to same branch<br/>PR auto-updates]
+    end
+
+    FB4 --> P4
+
+    MERGE --> V[Vercel auto-deploys<br/>from main · ~60 sec build]
+    V --> LIVE([🌐 Live blog post<br/>your-site.vercel.app/blog/slug])
 ```
 
-Every box is a function in the repo. Every arrow is a signal between systems (API call, file commit, webhook). The feedback loop arrow back to Slack is the agentic revision flow — marketer feedback triggers a re-draft, no manual intervention.
+Every box is a function in the repo. Every arrow is a signal between systems (API call, file commit, webhook). The feedback loop arrow back to the Slack node is the agentic revision flow — marketer feedback triggers a re-draft, no manual intervention.
 
 ---
 
