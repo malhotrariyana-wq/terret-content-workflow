@@ -52,7 +52,7 @@ The instinct to solve adoption with better enablement is understandable. The log
 
 Gartner research shows that the average B2B sales rep now operates across eight distinct tools to complete their daily workflow. Adding accountability checkpoints to that stack does not simplify it. It adds an administrative tax on top of an already overcrowded operating environment.
 
-The insight most CRO and RevOps leaders miss is this: complexity does not become manageable when you explain it better. It becomes irrelevant when it is absorbed upstream. When the system processes its own inputs — ingesting call transcripts, updating fields, triangulating signals — the rep never sees the machine running. They see only the output.
+The insight most CRO and RevOps leaders miss is this: complexity does not become manageable when you explain it better. It becomes irrelevant when it is absorbed upstream. Terret's Revenue Graph ingests call transcripts, updates fields, and triangulates signals automatically — the rep never sees the machine running. They see only the output.
 
 That output should never be "review this score" or "update this field." It should be "here is what to say to this person tomorrow, and here is why."
 
