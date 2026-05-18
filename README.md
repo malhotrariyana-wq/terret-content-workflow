@@ -109,7 +109,7 @@ One complete LinkedIn post → blog post cycle, fully run.
 | **Stage D — Draft** (Sonnet) | Drafts in Terret's voice using 3 anchor blogs | [markdown draft][STAGE_D] |
 | **Stage E — Refine** (Sonnet) | Editor pass for AI tells + voice drift | [refined markdown][STAGE_E] |
 | **Stage F — SEO/AEO** (Haiku) | Generates title, slug, meta, FAQ schema | [metadata JSON][STAGE_F] |
-| **Slack notification** | Bot posts with eval scores + PR link | [screenshot][SLACK_SS] |
+| **Slack notification** | Bot posts with eval scores + PR link | ![screenshot][SLACK_SS] |
 | **PR (approval moment)** | Marketer merges to publish | [PR #2 — merged][PR_URL] |
 | **Live post** | Vercel auto-deploys | [view live][POST_URL] |
 
