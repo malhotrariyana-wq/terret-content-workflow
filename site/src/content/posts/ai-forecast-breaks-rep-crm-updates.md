@@ -26,7 +26,7 @@ faq:
     answer: "When Contentsquare unified its four core data sources, it achieved a 25 percent increase in forecast accuracy and recaptured 20 operational hours per week—without changing the algorithm."
 ---
 
-You bought the AI. You had the kickoff call. You told the board this was the year revenue intelligence actually meant something. Six months later, the reps aren't using it, the forecasts are still wrong, and you're the only one in the room who knows it — because you're the one quietly pulling the reports.
+You bought the AI. The forecasts are still wrong. And you already know why — because you're the one quietly pulling the reports.
 
 ## TL;DR
 
