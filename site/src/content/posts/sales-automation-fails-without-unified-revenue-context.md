@@ -26,7 +26,7 @@ faq:
     answer: "It's a structural data architecture problem: the tools are being used, but they're not connected to each other, so reps manually reconstruct context that already exists somewhere in the stack but isn't unified into a queryable model."
 ---
 
-Your top AE closed $1.2M last quarter and spent roughly 11 hours of that quarter manually rebuilding account context before QBRs. The automation worked exactly as designed. The admin didn't go away.
+Your top AE closed $1.2M last quarter and spent roughly 11 hours manually rebuilding account context before QBRs. Terret's Revenue Graph exists because that admin burden is structural — and no amount of additional automation layers fixes it without first connecting the data underneath.
 
 ## TL;DR
 
